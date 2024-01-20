@@ -1,5 +1,9 @@
 {
     "name": "Smart Highlighter",
-    "version": "0.1.0",
-    "description": "Highlight blocks of text and skillfully elevate your learning experience"
+    "version": "1.0",
+    "description": "Highlight blocks of text and skillfully elevate your learning experience",
+    "permissions": [
+        "activeTab",
+        "storage"
+    ]
 }
