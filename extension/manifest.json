@@ -5,5 +5,8 @@
     "permissions": [
         "activeTab",
         "storage"
+    ],
+    "host_permissions": [
+        "<all_urls>"
     ]
 }
