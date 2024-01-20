@@ -1,10 +1,10 @@
-chrome.browserAction.onClicked.addListener(() => {
+chrome.action.onClicked.addListener(() => {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
       chrome.tabs.sendMessage(tabs[0].id, "openPopup");
     });
   });
   
-  chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     if (request.action === "saveHighlight") {
       chrome.storage.local.get("highlights", (data) => {
         const highlights = data.highlights || [];
