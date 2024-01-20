@@ -21,8 +21,8 @@
     },
 
     "icons": {
-        "16": "images/logo.png",
-        "48": "images/logo.png",
-        "128": "images/logo.png"
+        "16": "images/logoNew.png",
+        "48": "images/logoNew.png",
+        "128": "images/logoNew.png"
       }
 }
