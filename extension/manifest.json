@@ -19,6 +19,11 @@
           "title": "Get Definition",
           "contexts": ["selection"],
           "onclick": "getDefinition"
+        },
+        "store": {
+            "title": "Store Text",
+            "contexts": ["selection"],
+            "onclick": "storeText"
         }
     }
 }
