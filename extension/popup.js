@@ -1,8 +1,11 @@
 const highlightsList = document.getElementById("highlights-list");
+const chatContainer = document.querySelector(".chat-container");
 const chatOutput = document.getElementById("chat-output");
 
 document.getElementById("send-to-backend").addEventListener("click", () => {
-  chrome.runtime.sendMessage({ action: "sendToBackend" });
+  const highlightedText = window.getSelection().toString();
+  chrome.runtime.sendMessage({ action: "saveHighlight" });
+  console.log("Hello");
 });
 
 document.getElementById("chat-input").addEventListener("keypress", (event) => {
@@ -15,7 +18,7 @@ document.getElementById("chat-input").addEventListener("keypress", (event) => {
 });
 
 document.getElementById("open-chat").addEventListener("click", () => {
-  chrome.runtime.sendMessage({ action: "openChatPage" });
+  chatContainer.style.display = "block";
 });
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
@@ -24,10 +27,4 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   }
 });
 
-chrome.storage.local.get("highlights", (data) => {
-  data.highlights.forEach((highlight) => {
-    const listItem = document.createElement("li");
-    listItem.textContent = highlight;
-    highlightsList.appendChild(listItem);
-  });
-});
+

@@ -11,7 +11,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       chatOutput.innerHTML += `<p>Vectara: ${request.output}</p>`;
     } else if (request.action === "retrieveBackendData") {
       // Make a request to your backend to retrieve data
-      fetch("/your-backend-endpoint")
+      fetch("https://smart-highlighter-ffd082798250.herokuapp.com/readReq")
         .then(response => response.json())
         .then(data => {
           // Display the retrieved data in the chat output

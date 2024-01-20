@@ -1,0 +1,10 @@
+body {
+    max-width: 400px;
+    margin: 20px;
+  }
+  
+  .chat-container {
+    display: none;
+    margin-top: 20px;
+  }
+  

@@ -8,22 +8,32 @@ chrome.action.onClicked.addListener(() => {
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === "saveHighlight") {
     const highlightedText = request.text;
-    fetch("/your-save-highlight-endpoint", {
+    console.log(highlightedText);
+    fetch("https://smart-highlighter-ffd082798250.herokuapp.com/store", {
       method: "POST",
-      body: JSON.stringify({ text: highlightedText })
+      body: JSON.stringify({ "text": highlightedText, "secret": "Tanishqisthegoat" })
     })
     .then(response => response.json())
     .then(data => {
       console.log("Backend response:", data);
     });
   } else if (request.action === "sendQuestion") {
-    fetch("/your-send-question-endpoint", {
+    fetch("https://smart-highlighter-ffd082798250.herokuapp.com/resetCorp", {
+      method: "Put",
+      body: JSON.stringify({ "secret": "Tanishqisthegoat", "corpus_id": 4})
+    });
+    fetch("https://smart-highlighter-ffd082798250.herokuapp.com/replace", {
+      method: "Put",
+      body: JSON.stringify({ "secret": "Tanishqisthegoat", "corpus_id": 4})
+    });
+    console.log(request.text);
+    fetch("https://smart-highlighter-ffd082798250.herokuapp.com/readReq", {
       method: "POST",
-      body: JSON.stringify({ question: request.text })
+      body: JSON.stringify({ "text" : request.text, "secret": "Tanishqisthegoat", "corpus_id": 4 })
     })
     .then(response => response.json())
     .then(data => {
-      chrome.runtime.sendMessage({ action: "displayVectaraOutput", output: data.output });
+      chrome.runtime.sendMessage({ action: "retrieveBackendData", output: data.output });
     });
   } else if (request.action === "openChatPage") {
     chrome.tabs.create({ url: "chat.html" });
