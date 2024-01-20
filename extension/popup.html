@@ -22,7 +22,7 @@
     <img src="images/logoUInew.png" alt="Logo">
     <h1>Smart Highlighter</h1>
   </div>
-  <h2 style="--font-size:20px;">Saved Highlights</h2>
+  <!-- <h2 style="--font-size:20px;">Saved Highlights</h2>
   <ul id="highlights-list"></ul>
   <button id="send-to-backend">Send to Backend</button>
   <br>
@@ -32,5 +32,24 @@
   <div id="chat-output"></div>
   <button id="open-chat">Open Chat</button>
   <script src="popup.js"></script>
+</body>
+</html>-->
+<h2 style="--font-size:20px;">Saved Highlights</h2>
+<ul id="highlights-list"></ul>
+<button id="send-to-backend">Send to Backend</button>
+  <br>
+<h2 style="--font-size:20px;">Chat with Vectara</h2>
+<label for="chat-input">Enter your message:</label>
+<input type="text" id="chat-input" title="Type your message" placeholder="Type your message here...">
+<div id="chat-output"></div>
+<button id="open-chat">Open Chat</button>
+<script src="popup.js"></script>
+<script>
+document.querySelector('#increase-font').addEventListener('click', () => {
+   const currentSize = parseInt(getComputedStyle(document.querySelector('#highlights-list')).fontSize);
+   document.querySelector('#highlights-list').style.fontSize = (currentSize + 2) + 'px';
+});
+</script>
+
 </body>
 </html>
