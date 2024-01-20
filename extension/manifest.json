@@ -1,15 +1,24 @@
 {
     "name": "Smart Highlighter",
+    "manifest_version": "3",
     "version": "1.0",
     "description": "Highlight blocks of text and skillfully elevate your learning experience",
     "permissions": [
         "activeTab",
-        "storage"
+        "storage",
+        "contextMenus"
     ],
     "host_permissions": [
         "<all_urls>"
     ],
     "background": {
         "service_worker": "background.js"
+    },
+    "contextMenus": {
+        "definition": {
+          "title": "Get Definition",
+          "contexts": ["selection"],
+          "onclick": "getDefinition"
+        }
     }
 }
