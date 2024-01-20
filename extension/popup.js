@@ -14,6 +14,10 @@ document.getElementById("chat-input").addEventListener("keypress", (event) => {
   }
 });
 
+document.getElementById("open-chat").addEventListener("click", () => {
+  chrome.runtime.sendMessage({ action: "openChatPage" });
+});
+
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === "displayVectaraOutput") {
     chatOutput.innerHTML += `<p>Vectara: ${request.output}</p>`;
