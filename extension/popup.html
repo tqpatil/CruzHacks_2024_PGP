@@ -3,21 +3,45 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Smart Highlighter</title>
-  <link rel="stylesheet" href="popup.css">
+  <title>Save Highlight</title>
 </head>
 <body>
-  <h1>Saved Highlights</h1>
+  <div id="logo-title">
+    <img src="images/logoUInew.png" alt="Logo">
+    <h1>Smart Highlighter</h1>
+  </div>
+  <!-- <h2 style="--font-size:20px;">Saved Highlights</h2>
   <ul id="highlights-list"></ul>
   <button id="send-to-backend">Send to Backend</button>
   <br>
-  <div class="chat-container">
-    <h1>Chat with Vectara</h1>
-    <label for="chat-input">Enter your message:</label>
-    <input type="text" id="chat-input" title="Type your message" placeholder="Type your message here...">
-    <div id="chat-output"></div>
-  </div>
+  <h1>Chat with Vectara</h1>
+  <label for="chat-input">Enter your message:</label>
+  <input type="text" id="chat-input" title="Type your message" placeholder="Type your message here...">
+  <div id="chat-output"></div>
   <button id="open-chat">Open Chat</button>
   <script src="popup.js"></script>
+</body>
+</html>-->
+<h2 style="--font-size:20px;">Saved Highlights</h2>
+<ul id="highlights-list"></ul>
+<button id="send-to-backend">Send to Backend</button>
+  <br>
+<h2 style="--font-size:20px;">Chat with Vectara</h2>
+<!--<label for="chat-input">Enter your message:</label>
+<input type="text" id="chat-input" title="Type your message" placeholder="Type your message here...">-->
+<div>
+  <label for="chat-input" style="margin-bottom: 10px;">Enter your message:</label>
+  <input type="text" id="chat-input" title="Type your message" placeholder="Type your message here...">
+</div>
+<div id="chat-output"></div>
+<button id="open-chat">Open Chat</button>
+<script src="popup.js"></script>
+<script>
+document.querySelector('#increase-font').addEventListener('click', () => {
+   const currentSize = parseInt(getComputedStyle(document.querySelector('#highlights-list')).fontSize);
+   document.querySelector('#highlights-list').style.fontSize = (currentSize + 2) + 'px';
+});
+</script>
+
 </body>
 </html>

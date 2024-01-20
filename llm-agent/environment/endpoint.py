@@ -35,12 +35,17 @@ def readReq(text, corpus_id, secret):
     client = vectara(vars["VECTARA_CUSTOMER_ID"], vars["VECTARA_CLIENT_ID"], vars["VECTARA_CLIENT_SECRET"])
     response= client.query(corpus_id,text, top_k=6)
     return response
-def replace(corpus_id, secret):
+def reset(corpus_id, secret):
     if(secret != secretKey):
         return {'ErrorCode': 404, 'Response' : "Invalid secret key"}
     vars = read_env_file(".env")
     client = vectara(vars["VECTARA_CUSTOMER_ID"], vars["VECTARA_CLIENT_ID"], vars["VECTARA_CLIENT_SECRET"])
     client.reset_corpus(corpus_id)
+def replace(corpus_id, secret):
+    if(secret != secretKey):
+        return {'ErrorCode': 404, 'Response' : "Invalid secret key"}
+    vars = read_env_file(".env")
+    client = vectara(vars["VECTARA_CUSTOMER_ID"], vars["VECTARA_CLIENT_ID"], vars["VECTARA_CLIENT_SECRET"])
     client.upload(corpus_id, 'temp.txt', description= "Knowledge base")
 def store(text,secret):
     if(secret != secretKey):
@@ -58,11 +63,15 @@ async def request_api(request: Request, response: Response):
     secret = data.get("secret")
     corpus_id = data.get("corpus_id")
     result = readReq(text, corpus_id, secret)
-    result = jsonable_encoder({result['responseSet'][0]['summary'][0]["text"]: result['responseSet'][0]['response'][0]['text']})
+    try:
+        #if(result["responseSet"][0]["summary"][0]["status"][0]["code"] == 'QRY__SMRY__NO_QUERY_RESULTS'):
+        result = jsonable_encoder({result['responseSet'][0]['summary'][0]["status"][0]["statusDetail"]: "None"})
+    except Exception:
+        result = jsonable_encoder({result['responseSet'][0]['summary'][0]["text"]: result['responseSet'][0]['response'][0]['text']})
     response.status_code = 200
     response.headers["Content-Type"] = "application/json"
     return result
-@app.post("/replace")
+@app.put("/replace")
 async def replace_api(request: Request, response: Response):
     # Get the request data as JSON
     data = await request.json()
@@ -92,6 +101,15 @@ async def store_api(request: Request, response: Response):
     response.headers["Content-Type"] = "application/json"
     # Return a success message as JSON
     return {"message": "Text stored successfully"}
+@app.put("/resetCorp")
+async def reset_api(request:Request, response:Response):
+    data = await request.json()
+    secret = data.get("secret")
+    corpus_id = data.get("corpus_id")
+    reset(corpus_id, secret)
+    response.status_code = 200
+    response.headers["Content-Type"] = "application/json"
+    return 
 ##sentence bert dimension is 384
 
 # if __name__ == "__main__":
