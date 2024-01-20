@@ -4,22 +4,29 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Smart Highlighter</title>
-  <!--<style
-  img {
-    width: 45px;
-    height: 45px;
-    padding: 0;
-    margin: 0;
-  }
-  ></style>-->
-  <img src="images/logoUInew.png">
+  <style>
+    #logo-title {
+      display: flex;
+      align-items: center;
+    }
+    #logo-title img {
+      margin-right: 10px;
+    }
+    #highlights-list {
+      font-size: var(--font-size, 16px);
+    }
+  </style>
 </head>
 <body>
-  <h1>Saved Highlights</h1>
+  <div id="logo-title">
+    <img src="images/logoUInew.png" alt="Logo">
+    <h1>Smart Highlighter</h1>
+  </div>
+  <h2 style="--font-size:20px;">Saved Highlights</h2>
   <ul id="highlights-list"></ul>
   <button id="send-to-backend">Send to Backend</button>
   <br>
-  <h1>Chat with Vectara</h1>
+  <h2 style="--font-size:20px;">Chat with Vectara</h2>
   <label for="chat-input">Enter your message:</label>
   <input type="text" id="chat-input" title="Type your message" placeholder="Type your message here...">
   <div id="chat-output"></div>
