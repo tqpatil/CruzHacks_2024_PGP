@@ -1,5 +1,39 @@
 {
     "name": "Smart Highlighter",
-    "version": "0.1.0",
-    "description": "Highlight blocks of text and skillfully elevate your learning experience"
+    "manifest_version": "3",
+    "version": "1.0",
+    "description": "Highlight blocks of text and skillfully elevate your learning experience",
+    "permissions": [
+        "activeTab",
+        "storage",
+        "scripting",
+        "contextMenus"
+    ],
+    "host_permissions": [
+        "<all_urls>"
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "action": {
+        "default_title": "Save Highlight",
+        "default_popup": "popup.html"
+    },
+    "contextMenus": {
+        "definition": {
+            "title": "Get Definition",
+            "contexts": ["selection"],
+            "onclick": "getDefinition"
+        },
+        "store": {
+            "title": "Store Text",
+            "contexts": ["selection"],
+            "onclick": "storeText"
+        }
+    },
+    "icons": {
+        "16": "logo16.png",
+        "48": "logo48.png",
+        "128": "logo128.png"
+      }
 }
