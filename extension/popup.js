@@ -29,9 +29,9 @@ document.getElementById('open-chat').addEventListener('click', function() {
   window.open('chat.html', '_blank');
 });
 
-document.getElementById("open-chat").addEventListener("click", () => {
-  chatContainer.style.display = "block";
-});
+//document.getElementById("open-chat").addEventListener("click", () => {
+  //chatContainer.style.display = "block";
+//});
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === "displayVectaraOutput") {
