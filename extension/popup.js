@@ -3,9 +3,13 @@ const chatContainer = document.querySelector(".chat-container");
 const chatOutput = document.getElementById("chat-output");
 
 document.getElementById("send-to-backend").addEventListener("click", () => {
-  const highlightedText = window.getSelection().toString();
-  chrome.runtime.sendMessage({ action: "saveHighlight" });
-  console.log("Hello");
+  chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+    chrome.tabs.sendMessage(tabs[0].id, { action: "getHighlight" }, (response) => {
+      const highlightedText = response.text;
+
+      chrome.runtime.sendMessage({ action: "saveHighlight", text: highlightedText });
+    });
+  });
 });
 
 document.getElementById("chat-input").addEventListener("keypress", (event) => {

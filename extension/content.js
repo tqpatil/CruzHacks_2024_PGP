@@ -1,11 +1,13 @@
-//const button = document.createElement("button");
-//button.textContent = "Save Highlight";
-//button.addEventListener("click", () => {
-//  const highlightedText = window.getSelection().toString();
-//  chrome.runtime.sendMessage({ action: "saveHighlight", text: highlightedText });
-//  console.log("Hello");
-//});
-//document.body.appendChild(button);
+function handleSaveHighlight() {
+  const highlightedText = window.getSelection().toString();
+  chrome.runtime.sendMessage({ action: "saveHighlight", text: highlightedText });
+}
+
+const button = document.createElement("button");
+button.textContent = "Save Highlight";
+button.addEventListener("click", handleSaveHighlight);
+document.body.appendChild(button);
+
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === "openPopup") {
