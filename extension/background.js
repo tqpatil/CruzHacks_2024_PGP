@@ -59,4 +59,34 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 
 });
 
+RunStore = function(word){
+  console.log(word.selectionText);
+  const highlightedText = word.selectionText;
+  if (highlightedText == " " || highlightedText == ""){
+    console.log("error");
+  }
+  console.log(highlightedText);
+  fetch("https://smart-highlighter-ffd082798250.herokuapp.com/store", {
+    method: "POST",
+    body: JSON.stringify({ "text": highlightedText, "secret": "Tanishqisthegoat" })
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log("Backend response:", data);
+  });
+  setTimeout(() => {fetch("https://smart-highlighter-ffd082798250.herokuapp.com/resetCorp", {
+    method: "Put",
+    body: JSON.stringify({ "secret": "Tanishqisthegoat", "corpus_id": 4})
+  }).then(data => {
+    console.log("Backend response:", data);
+  })
+  }, 6000);
+}
+chrome.contextMenus.removeAll(function() {
+  chrome.contextMenus.create({
+   id: "1",
+   title: "Store in Archive",
+   contexts:["selection"],  // ContextType
+  }); })
 
+chrome.contextMenus.onClicked.addListener(RunStore);
