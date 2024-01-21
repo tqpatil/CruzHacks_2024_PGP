@@ -4,24 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chat with Vectara</title>
-</head>
-<body>
-  <h1>Chat with Vectara</h1>
-  <div id="chat-container">
-    <div id="chat-output"></div>
-    <label for="chat-input">Enter your question:</label>
-    <input type="text" id="chat-input" title="Type your question" placeholder="Type your question here...">
-    <button id="send-question">Send Question</button>
-  </div>
-  <script src="chat.js"></script>
-</body>
-</html>-->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chat with Vectara</title>
   <script nonce="random_string_here" src="chat.js"></script>
 </head>
 <body>
@@ -33,5 +15,52 @@
     <button id="send-question">Send Question</button>
   </div>
 </body>
-</html>
+</html>-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat with Vectara</title>
+  <script nonce="random_string_here" src="chat.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f0f0;
+    }
+    #chat-container {
+      max-width: 600px;
+      margin: auto;
+      background-color: white;
+      border-radius: 5px;
+      box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+      padding:20px; 
+    }
+    #send-question {
+        background-color:#4CAF50; 
+        color:white; 
+        border:none; 
+        padding:10px; 
+        text-align:center; 
+        display:inline-block; 
+        font-size:16px; 
+        margin-top :10px ;  
+     }
+     h1{
+         color:#333 ;
+     }
+   </style>
+</head>
+<body>
+<div id="chat-container">
+<h1>Chat with Vectara</h1>
+<div id="chat-output"></div>
+<label for="chat-input">Enter your question:</label><br/>
+<input type="text" id="chat-input" title="Type your question" placeholder="Type your question here..." style = "width :100% ; padding :10 px ; margin-top :5 px "><br/>
+<button id ="send-question">Send Question</button>
+</div>
+</body>
+</html> 
 
