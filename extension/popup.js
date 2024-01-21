@@ -14,15 +14,6 @@ document.getElementById("send-to-backend").onclick = async () => {
   }
   chrome.runtime.sendMessage({ action: "saveHighlight", text: result });
 };
-/*
-document.getElementById("send-to-backend").addEventListener("click", () => {
-  chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-    chrome.tabs.sendMessage(tabs[0].id, { action: "getHighlight" }, (response) => {
-      const highlightedText = response.text;
-      chrome.runtime.sendMessage({ action: "saveHighlight", text: highlightedText });
-    });
-  });
-});*/
 
 
 document.getElementById("chat-input").addEventListener("keypress", (event) => {
