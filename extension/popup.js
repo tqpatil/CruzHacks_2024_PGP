@@ -26,7 +26,7 @@ document.getElementById("chat-input").addEventListener("keypress", (event) => {
 });
 
 document.getElementById('open-chat').addEventListener('click', function() {
-  window.open('chat.html', '_blank');
+  window.open('chat.html', '_blank', 'noopener');
 });
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
