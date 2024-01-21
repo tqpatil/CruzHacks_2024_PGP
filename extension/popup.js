@@ -32,6 +32,7 @@ document.getElementById('open-chat').addEventListener('click', function() {
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === "displayVectaraOutput") {
     chatOutput.innerHTML += `<p>Vectara: ${request.output}</p>`;
+    chatOutput.innerHTML += `<p>Source: ${request.source}</p>`;
   }
 });
 

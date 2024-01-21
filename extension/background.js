@@ -41,7 +41,8 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       body: JSON.stringify({ "text" : request.text, "secret": "Tanishqisthegoat", "corpus_id": 4 })
     }).then(response => response.json())
     .then(parsedData => {
-      chrome.runtime.sendMessage({ action: "displayVectaraOutput", output: parsedData.output });
+      console.log(parsedData.text);
+      chrome.runtime.sendMessage({ action: "displayVectaraOutput", output: parsedData.text, source: parsedData.source });
     })
     .catch(error => {
       console.error("Error:", error);
