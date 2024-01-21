@@ -54,7 +54,7 @@ document.getElementById("chat-input").addEventListener("keypress", (event) => {
 //  window.open('chat.html', '_blank', 'noopener');
 //});
 
-chatOutput.style.fontSize = "20px";
+chatOutput.style.fontSize = "16px";
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === "displayVectaraOutput") {
     chatOutput.innerHTML += `<p>Vectara: ${request.output}</p>`;
