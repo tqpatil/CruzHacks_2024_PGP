@@ -25,6 +25,10 @@ document.getElementById("chat-input").addEventListener("keypress", (event) => {
   }
 });
 
+document.getElementById('open-chat').addEventListener('click', function() {
+  window.open('chat.html', '_blank');
+});
+
 document.getElementById("open-chat").addEventListener("click", () => {
   chatContainer.style.display = "block";
 });
