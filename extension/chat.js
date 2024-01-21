@@ -9,16 +9,6 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     if (request.action === "displayVectaraOutput") {
       const chatOutput = document.getElementById("chat-output");
       chatOutput.innerHTML += `<p>Vectara: ${request.output}</p>`;
-    } else if (request.action === "retrieveBackendData") {
-      // Make a request to your backend to retrieve data
-      fetch("https://smart-highlighter-ffd082798250.herokuapp.com/readReq")
-        .then(response => response.json())
-        .then(data => {
-          // Display the retrieved data in the chat output
-          const chatOutput = document.getElementById("chat-output");
-          chatOutput.innerHTML += `<p>Backend Response: ${data.message}</p>`;
-        })
-        .catch(error => console.error("Error retrieving data from backend:", error));
     }
   });
   

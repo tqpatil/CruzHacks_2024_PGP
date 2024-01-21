@@ -39,16 +39,10 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     fetch("https://smart-highlighter-ffd082798250.herokuapp.com/readReq", {
       method: "POST",
       body: JSON.stringify({ "text" : request.text, "secret": "Tanishqisthegoat", "corpus_id": 4 })
+    }).then(response => response.json())
+    .then(parsedData => {
+      chrome.runtime.sendMessage({ action: "displayVectaraOutput", output: parsedData.output });
     })
-    .then(data => {
-      //console.log("Backend response:", data);
-      console.log(data.json());
-      chrome.runtime.sendMessage({ action: "retrieveBackendData", output: data.json() });
-      //return data.json(); // Ensure you return the response for the next `then` block
-    })
-    //.then(parsedData => {
-    //  chrome.runtime.sendMessage({ action: "retrieveBackendData", output: parsedData.output });
-    //})
     .catch(error => {
       console.error("Error:", error);
     });
