@@ -20,13 +20,15 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     .then(data => {
       console.log("Backend response:", data);
     });
-  } else if (request.action === "sendQuestion") {
-    fetch("https://smart-highlighter-ffd082798250.herokuapp.com/resetCorp", {
+    setTimeout(() => {fetch("https://smart-highlighter-ffd082798250.herokuapp.com/resetCorp", {
       method: "Put",
       body: JSON.stringify({ "secret": "Tanishqisthegoat", "corpus_id": 4})
     }).then(data => {
       console.log("Backend response:", data);
-    });
+    })
+    }, 10000);
+
+  } else if (request.action === "sendQuestion") {
     fetch("https://smart-highlighter-ffd082798250.herokuapp.com/replace", {
       method: "Put",
       body: JSON.stringify({ "secret": "Tanishqisthegoat", "corpus_id": 4})
@@ -38,12 +40,20 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       method: "POST",
       body: JSON.stringify({ "text" : request.text, "secret": "Tanishqisthegoat", "corpus_id": 4 })
     })
-    .then(response => response.json())
     .then(data => {
-      chrome.runtime.sendMessage({ action: "retrieveBackendData", output: data.output });
-    }).then(data => {
-      console.log("Backend response:", data);
+      //console.log("Backend response:", data);
+      console.log(data.json());
+      chrome.runtime.sendMessage({ action: "retrieveBackendData", output: data.json() });
+      //return data.json(); // Ensure you return the response for the next `then` block
+    })
+    //.then(parsedData => {
+    //  chrome.runtime.sendMessage({ action: "retrieveBackendData", output: parsedData.output });
+    //})
+    .catch(error => {
+      console.error("Error:", error);
     });
+
+
   } else if (request.action === "openChatPage") {
     chrome.tabs.create({ url: "chat.html" });
   } else if (request.action === "retrieveBackendData") {
@@ -53,3 +63,5 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   }
 
 });
+
+
