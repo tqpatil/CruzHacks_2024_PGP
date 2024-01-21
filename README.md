@@ -23,5 +23,5 @@
 <img width="131" alt="image" src="https://github.com/tqpatil/CruzHacks_2024_PGP/assets/34226808/0ec681b8-ccd5-4e37-b58b-a5e22f802c74">
 
 4. Select "Load Unpacked" in the top bar
-5. Navigate and select to the "extension" folder
-You're ready to go!
+5. Navigate to and select the "extension" folder
+### You're ready to go!
