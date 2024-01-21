@@ -12,7 +12,7 @@ document.getElementById("send-to-backend").onclick = async () => {
   } catch (e) {
     return; // ignoring an unsupported page like chrome://extensions
   }
-  console.log(result)
+  chrome.runtime.sendMessage({ action: "saveHighlight", text: result });
 };
 /*
 document.getElementById("send-to-backend").addEventListener("click", () => {
