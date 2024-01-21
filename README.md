@@ -1,7 +1,7 @@
 # Smart Highlighter
 <img width="267" alt="Screenshot 2024-01-21 001227" src="https://github.com/tqpatil/CruzHacks_2024_PGP/assets/34226808/911d6f25-f95a-461e-99ed-8619d8a9b96a">
 
-``` A smart and simple way to take notes and reflect on them. ``` 
+``` A bright and simple way to take notes and reflect on them. ``` 
 ## Key Features:
 - We allow you to easily store and recall notes by first:
 1. Highlighting the sentence or block of text you want to store with your cursor
@@ -16,3 +16,12 @@
 4. Chat with your notes
 <img width="263" alt="image" src="https://github.com/tqpatil/CruzHacks_2024_PGP/assets/34226808/37ffbb3a-879a-4f78-acc0-27496cb55e5b">
 
+## Setup
+1. Clone this repository
+2. Navigate to chrome://extensions/ within Google Chrome
+3. Enable Developer Mode
+<img width="131" alt="image" src="https://github.com/tqpatil/CruzHacks_2024_PGP/assets/34226808/0ec681b8-ccd5-4e37-b58b-a5e22f802c74">
+
+4. Select "Load Unpacked" in the top bar
+5. Navigate and select to the "extension" folder
+You're ready to go!
