@@ -59,7 +59,7 @@ chatOutput.style.color = "white";
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === "displayVectaraOutput") {
     chatOutput.innerHTML += `<p>Question: ${request.question}</p>`;
-    chatOutput.innerHTML += `<p>Vectara: ${request.output}</p>`;
+    chatOutput.innerHTML += `<p>Smart Highlighter: ${request.output}</p>`;
     chatOutput.innerHTML += `<p>Source: ${request.source}</p>`;
   }
 });
