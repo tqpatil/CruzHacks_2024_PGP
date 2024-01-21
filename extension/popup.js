@@ -1,6 +1,31 @@
 const highlightsList = document.getElementById("highlights-list");
 const chatContainer = document.querySelector(".chat-container");
 const chatOutput = document.getElementById("chat-output");
+
+
+chrome.runtime.onInstalled.addListener(function() {
+  chrome.contextMenus.create({
+    id: "store",
+    title: "Store Highlight",
+    contexts: ["all"]
+  });
+});
+
+chrome.contextMenus.onClicked.addListener(async function (info, tab) {
+  if (info.menuItemId === "store") {
+    let result;
+    try {
+      [{ result }] = await chrome.scripting.executeScript({
+        target: { tabId: tab.id },
+        func: () => getSelection().toString(),
+      });
+    } catch (e) {
+      return; // ignoring an unsupported page like chrome://extensions
+    }
+    chrome.runtime.sendMessage({ action: "saveHighlight", text: result });
+  }
+});
+
 document.getElementById("send-to-backend").onclick = async () => {
   const [tab] = await chrome.tabs.query({active: true, currentWindow: true});
   let result;
@@ -25,9 +50,9 @@ document.getElementById("chat-input").addEventListener("keypress", (event) => {
   }
 });
 
-document.getElementById('open-chat').addEventListener('click', function() {
-  window.open('chat.html', '_blank', 'noopener');
-});
+//document.getElementById('open-chat').addEventListener('click', function() {
+//  window.open('chat.html', '_blank', 'noopener');
+//});
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === "displayVectaraOutput") {
