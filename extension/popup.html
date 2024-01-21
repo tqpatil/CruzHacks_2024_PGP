@@ -4,31 +4,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Save Highlight</title>
+  <style>
+    #logo-title {
+      display: flex;
+      align-items: center;
+    }
+    #logo-title img {
+      margin-right: 20px;
+    }
+  </style>
 </head>
 <body>
-  <div id="logo-title">
+<div id="logo-title">
     <img src="images/logoUI.png" alt="Logo">
     <h1>Smart Highlighter</h1>
-  </div>
-  <!-- <h2 style="--font-size:20px;">Saved Highlights</h2>
-  <ul id="highlights-list"></ul>
-  <button id="send-to-backend">Send to Backend</button>
-  <br>
-  <h1>Chat with Vectara</h1>
-  <label for="chat-input">Enter your message:</label>
-  <input type="text" id="chat-input" title="Type your message" placeholder="Type your message here...">
-  <div id="chat-output"></div>
-  <button id="open-chat">Open Chat</button>
-  <script src="popup.js"></script>
-</body>
-</html>-->
+</div>
 <h2 style="--font-size:20px;">Saved Highlights</h2>
 <ul id="highlights-list"></ul>
 <button id="send-to-backend">Send to Backend</button>
   <br>
 <h2 style="--font-size:20px;">Chat with Vectara</h2>
-<!--<label for="chat-input">Enter your message:</label>
-<input type="text" id="chat-input" title="Type your message" placeholder="Type your message here...">-->
 <div>
   <label for="chat-input" style="margin-bottom: 10px;">Enter your message:</label>
   <input type="text" id="chat-input" title="Type your message" placeholder="Type your message here...">
@@ -36,7 +31,5 @@
 <div id="chat-output"></div>
 <button id="open-chat">Open Chat</button>
 <script src="popup.js"></script>
-
-
 </body>
 </html>
