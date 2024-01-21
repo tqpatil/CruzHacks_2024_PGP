@@ -42,7 +42,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     }).then(response => response.json())
     .then(parsedData => {
       console.log(parsedData.text);
-      chrome.runtime.sendMessage({ action: "displayVectaraOutput", output: parsedData.text, source: parsedData.source });
+      chrome.runtime.sendMessage({ action: "displayVectaraOutput", output: parsedData.text, source: parsedData.source, question: request.text});
     })
     .catch(error => {
       console.error("Error:", error);
@@ -80,7 +80,7 @@ RunStore = function(word){
   }).then(data => {
     console.log("Backend response:", data);
   })
-  }, 6000);
+  }, 10000);
 }
 chrome.contextMenus.removeAll(function() {
   chrome.contextMenus.create({
